@@ -1,0 +1,35 @@
+{{ define "main" }}
+{{ partial "profile.html" . }}
+
+<section id="archive">
+    {{ range where .Pages "Type" "post" }}
+        <div class="group">
+            <h3 class="key">
+                {{ .Date.Format "2006" }}
+            </h3>
+
+            <div class="value">
+              <div class="date">
+                <time datetime="{{ .Date.Format "2006-01-02" }}">
+                    {{ i18n "publishDateShort" . }}
+                </time>
+              </div>
+              <div class="title">
+                  <a href="{{ .Permalink }}">
+                      {{ .Title }}
+                  </a>
+
+                  {{ with .Params.tags }}
+                      <div class="tags">
+                          {{ range . }}
+                              <a href="{{ "tags/" | absURL }}{{ . | urlize }}">{{ . }}</a>
+                          </div>
+                      {{ end }}
+                  {{ end}}
+              </div>
+            </div>
+        </div>
+    {{ end }}
+</section>
+
+{{ end }}
