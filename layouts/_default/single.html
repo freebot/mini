@@ -4,8 +4,7 @@
     <h1 class="title">{{ .Title }}</h1>
 
     <div class="tip">
-        <time datetime="{{ .PublishDate }}">{{ i18n "publishDateFull" . }}</time>
-        <span class="split">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ i18n "publishDateFull" . }}</time>
           ·
         </span>
         <span>
@@ -42,4 +41,3 @@
 </section>
 
 {{ end }}
-

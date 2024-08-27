@@ -30,7 +30,7 @@ publishDate:
   other: '{{ .PublishDate.Format "01/01/2006" }}'
 
 publishDateFull:
-  other: '{{ .PublishDate.Format "01/01/2006" }}'
+  other: '{{ .Date.Format "02 de January de 2006" | i18n }}'
 
 wordCount:
   one: "{{ .WordCount }} palabra"
@@ -48,4 +48,21 @@ poweredBy:
     href='https://github.com/nodejh/hugo-theme-mini'>nodejh</a>
 
 publishDateShort:
-  other: '{{ .PublishDate.Format "01/02" }}'
+  other: '{{ .Date.Format "02/01/2006" }}'
+
+publishDateFull:
+  other: '{{ .Date.Format "02 de January de 2006" }}'
+
+monthNames:
+  - enero
+  - febrero
+  - marzo
+  - abril
+  - mayo
+  - junio
+  - julio
+  - agosto
+  - septiembre
+  - octubre
+  - noviembre
+  - diciembre

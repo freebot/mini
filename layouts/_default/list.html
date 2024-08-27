@@ -2,37 +2,34 @@
 {{ partial "profile.html" . }}
 
 <section id="archive">
-    {{ range .Data.Pages.GroupByDate "2006" }}
+    {{ range where .Pages "Type" "post" }}
         <div class="group">
             <h3 class="key">
-                {{ .Key }}
+                {{ .Date.Format "2006" }}
             </h3>
 
-            {{ range .Pages }}
-                <div class="value">
-                  <div class="date">
-                    <time datetime="{{ .PublishDate }}">{{ i18n "publishDateShort" . }}</time>
-                  </div>
-                  <div class="title">
-                      <a href="{{ .Permalink }}">
-                          {{ .Title }}
-                      </a>
+            <div class="value">
+              <div class="date">
+                <time datetime="{{ .Date.Format "2006-01-02" }}">
+                    {{ i18n "publishDateShort" . }}
+                </time>
+              </div>
+              <div class="title">
+                  <a href="{{ .Permalink }}">
+                      {{ .Title }}
+                  </a>
 
-                      {{ with .Params.tags }}
-                          <div class="tags">
-                              {{ range . }}
-                                  <a href="{{ "tags/" | absURL }}{{ . | urlize }}">{{ . }}</a>
-                              {{ end }}
+                  {{ with .Params.tags }}
+                      <div class="tags">
+                          {{ range . }}
+                              <a href="{{ "tags/" | absURL }}{{ . | urlize }}">{{ . }}</a>
                           </div>
-                      {{ end}}
-                  </div>
-                </div>
-            {{ end }}          
+                      {{ end }}
+                  {{ end}}
+              </div>
+            </div>
         </div>
     {{ end }}
-
-
 </section>
-
 
 {{ end }}
